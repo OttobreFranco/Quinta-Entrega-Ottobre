@@ -14,6 +14,8 @@ export default styles = StyleSheet.create({
 
     text: {
         color: 'white',
+        fontFamily: 'OswaldLight',
+        fontSize: 22,
     }
 
 });

@@ -7,7 +7,7 @@ import styles from "./Home.style";
 
 const Home = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Header title={"Categories"} />
       <View>
         <FlatList
@@ -20,7 +20,7 @@ const Home = ({ navigation }) => {
           }
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

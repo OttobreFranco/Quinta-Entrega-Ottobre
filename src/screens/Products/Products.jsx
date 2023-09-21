@@ -1,39 +1,49 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity , View} from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../../data/products";
 import styles from './Products.style'
 import { Header , SearchInput } from '../../components'
+import products from "../../data/products";
 
-const Products = ({ category }) => {
+const Products = ({ navigation , route }) => {
+
   const [arrProducts, setArrProducts] = useState([]);
 
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState('');
+
+  const { category } = route.params;
+
+  // console.log(category)
 
   useEffect(() => {
+    
     if (category) {
       const products = allProducts.filter(
-        (product) => product.category === category
+        product => product.category === category
       )
       const productsFiltered = products.filter(products => 
         products.title.includes(keyword)
       )
       setArrProducts(productsFiltered)
     } else {
+      const productsFiltered= allProducts.filter( product =>
+        products.title.includes(keyword)
+  )
         setArrProducts(productsFiltered)
-    }
-  }, [category,keyword]);
+      }
+  }, [category,keyword])
 
   return (
     <View style={styles.container}>
-      <Header title={category} />
+      <Header title={"category"} />
       <SearchInput onSearch={setKeyword}/>
       <View style={styles.listContainer}>
         <FlatList 
         data={arrProducts}
         renderItem={({item})=> (
-            <View>
+            <TouchableOpacity  onPress={() => navigation.navigate('Details')}>
                 <Text>{item.title}</Text>
-            </View>
+            </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
         />

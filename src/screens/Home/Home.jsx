@@ -4,7 +4,7 @@ import dataCategories from "../../data/dataCategories";
 import { CategoryItem } from "./components";
 import { Header } from "../../components";
 import styles from "./Home.style";
-
+//prueba edit
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>

@@ -4,10 +4,12 @@ import dataCategories from "../../data/dataCategories";
 import { CategoryItem } from "./components";
 import { Header } from "../../components";
 import styles from "./Home.style";
+import Counter from "../../components/Counter";
 //prueba edit
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Counter/>
       <Header title={"Categories"} />
       <View>
         <FlatList

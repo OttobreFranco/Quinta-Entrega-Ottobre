@@ -1,20 +1,25 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable , Text, View } from 'react-native'
 import React from 'react'
-import CartItemStyles from './CartItem.styles'
+import styles from './CartItem.styles'
 import Feather from '@expo/vector-icons/Feather'
 
-const CartItem = () => {
+const CartItem = ({item}) => {
   return (
     <View style={styles.container}>
         <View>
-            <Text>
-                Nombre
+            <Image
+            source={{uri: item.images[0]}}
+            />
+        </View>
+        <View>
+            <Text style={styles.name}>
+                {item.title}
             </Text>
         </View>
         <View>
             <View>
-                <Text>Cantidad</Text>
-                <Text>Precio</Text>
+                <Text>{item.quantity}</Text>
+                <Text>{item.price}</Text>
             </View>
             <Pressable>
                 <Feather name ="trash" size={24} color={'red'}/>

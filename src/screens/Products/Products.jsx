@@ -1,56 +1,57 @@
-import { FlatList, Text, TouchableOpacity , View} from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../../data/products";
-import styles from './Products.style'
-import { Header , SearchInput } from '../../components'
+import styles from "./Products.style";
+import { Header, SearchInput } from "../../components";
 import products from "../../data/products";
+import { useSelector } from "react-redux";
+import { useGetProductsByCategoryQuery } from "../../services/shopApi";
+import { isLoading } from "expo-font";
 
-const Products = ({ navigation , route }) => {
+const Products = ({ navigation }) => {
 
-  const [arrProducts, setArrProducts] = useState([]);
+  const [keyword, setKeyword] = useState("");
 
-  const [keyword, setKeyword] = useState('');
+  const category = useSelector(state => state.shop.categorySelected);
 
-  const { category } = route.params;
+  const  { data , isLoading}   = useGetProductsByCategoryQuery(category);
+  
 
-  // console.log(category)
 
   useEffect(() => {
-    
-    if (category) {
-      const products = allProducts.filter(
-        product => product.category === category
-      )
-      const productsFiltered = products.filter(products => 
+
+    if (data) {
+      
+      const productsFiltered = products.filter((products) =>
         products.title.includes(keyword)
-      )
-      setArrProducts(productsFiltered)
-    } else {
-      const productsFiltered= allProducts.filter( product =>
-        products.title.includes(keyword)
-  )
-        setArrProducts(productsFiltered)
-      }
-  }, [category,keyword])
+      );
+    } 
+  }, [keyword]);
+  
 
   return (
     <View style={styles.container}>
       <Header title={category} />
-      <SearchInput onSearch={setKeyword}/>
+      <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
-        <FlatList 
-        data={arrProducts}
-        renderItem={({item})=> (
-            <TouchableOpacity  onPress={() => navigation.navigate('Details' , { product: item})}>
+        { !isLoading && (
+          <FlatList
+            data={Object.values(data)}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("Details", { product: item })
+                }
+              >
                 <Text>{item.title}</Text>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id}
+          />
         )}
-        keyExtractor={item => item.id}
-        />
       </View>
     </View>
   );
 };
 
 export default Products;
-

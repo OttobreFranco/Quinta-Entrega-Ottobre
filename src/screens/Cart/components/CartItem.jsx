@@ -1,4 +1,4 @@
-import { Pressable , Text, View } from 'react-native'
+import { Pressable , Text, View , Image } from 'react-native'
 import React from 'react'
 import styles from './CartItem.styles'
 import Feather from '@expo/vector-icons/Feather'

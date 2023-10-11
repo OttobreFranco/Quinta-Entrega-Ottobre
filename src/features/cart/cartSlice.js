@@ -4,7 +4,7 @@ const initialState = {
     user: "userLogged",
     updatedAt: Date.now().toLocaleString(),
     items: [],
-    total: null,
+    total: 0,
 }
 
 export const cartSlice = createSlice({

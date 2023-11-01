@@ -1,4 +1,4 @@
-import { CreateApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { apiKey, authUrl } from "../firebase";
 
 export const authApi = createApi({
@@ -22,7 +22,5 @@ export const authApi = createApi({
     })
 })
 
-export const {
-    useSignupMutation,
-    useLoginMutation,
-} = authApi
+
+export const { useLoginMutation, useSignUpMutation } = authApi

@@ -15,6 +15,7 @@ export default styles = StyleSheet.create({
   cameraButton: {
     backgroundColor: colors.secondary,
     height: 50,
-    width: '100%',
+    width: '30%',
+    borderRadius: 10,
   },
 });

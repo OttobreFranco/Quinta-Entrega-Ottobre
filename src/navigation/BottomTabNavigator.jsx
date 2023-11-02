@@ -4,7 +4,7 @@ import { colors } from "../constants/colors";
 import CartNavigator from "./CartNavigator";
 import StackNavigator from "./StackNavigator";
 import Feather from "@expo/vector-icons/Feather";
-import OrdersNavigator from "./OrderNavigator";
+import OrdersNavigator from "./OrdersNavigator";
 import ProfileNavigator from "./ProfileNavigator";
 
 const BottomTab = createBottomTabNavigator();

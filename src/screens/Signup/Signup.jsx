@@ -5,7 +5,7 @@ import { useSignUpMutation } from "../../services/authApi";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/auth/authSlice";
 
-const Signup = () => {
+const Signup = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
@@ -27,28 +27,34 @@ const Signup = () => {
   return (
     <View style={styles.container}>
       <View style={styles.loginContainer}>
-        <Text>Sign up to start</Text>
+        <Text>Sing up to start</Text>
+        <Text>Email</Text>
         <TextInput
           style={styles.inputEmail}
           value={email}
           onChangeText={setEmail}
         />
+         <Text>Password</Text>
         <TextInput
           style={styles.inputEmail}
           value={password}
           onChangeText={setPassword}
         />
+         <Text>Confirm Password</Text>
         <TextInput
           style={styles.inputEmail}
           value={confirmPass}
           onChangeText={setConfirmPass}
         />
         <Pressable style={styles.loginButton} onPress={onSubmit}>
-          <Text style={styles.text}>Sign up</Text>
+          <Text style={{ color: 'white' }}>Sign up</Text>
         </Pressable>
         <Text>Already have an account?</Text>
-        <Pressable style={styles.loginButton}>
-          <Text style={styles.text}>Login</Text>
+        <Pressable
+          style={styles.loginButton}
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text style={{ color: 'white' }}>Login</Text>
         </Pressable>
       </View>
     </View>

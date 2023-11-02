@@ -1,20 +1,37 @@
-import { View, Text } from 'react-native'
-import React , { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { setCameraImage, setUser } from '../features/auth/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import AuthStackNavigator from './AuthStackNavigator'
 import BottomTabNavigator from './BottomTabNavigator'
-import { useSelector } from 'react-redux'
-
+import { fetchSession } from '../db'
+import { useGetProfileImageQuery } from '../services/shopApi'
 
 const MainNavigator = () => {
+  const { user, localId } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+  const { data, error, isLoading } = useGetProfileImageQuery(localId)
 
-    // const [user,setUser] = useState(null)
+  useEffect(() => {
+    if (data) {
+      dispatch(setCameraImage(data.image))
+    }
+  }, [data])
 
-    const user = useSelector(state => state.auth.user)
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const session = await fetchSession()
+        if (session.rows.length) {
+          console.log(session.rows._array[0])
+          const user = session.rows._array[0]
+          dispatch(setUser(user))
+        }
+      } catch (error) {
+      }
+    })()
+  }, [])
 
-    console.log(user)
-
-  // return user? <BottomTabNavigator/> : <AuthStackNavigator/>
-  return <BottomTabNavigator/>
+  return user ? <BottomTabNavigator /> : <AuthStackNavigator />
 }
 
 export default MainNavigator

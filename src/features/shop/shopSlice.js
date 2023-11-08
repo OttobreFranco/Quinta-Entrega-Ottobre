@@ -8,6 +8,7 @@ const initialState = {
   porductsFilteredByCategory: [],
   categorySelected: null,
   productIdSelected: null, //
+  modelSelected: null,
 };
 
 export const shopSlice = createSlice({
@@ -16,6 +17,9 @@ export const shopSlice = createSlice({
   reducers: {
     setCategorySelected: (state, action) => {
       state.categorySelected = action.payload;
+    },
+    setModelSelected: (state, action) => {
+      state.modelSelected = action.payload;
     },
     setProductIdSelected: (state, action) => {
       state.productIdSelected = action.payload;

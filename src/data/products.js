@@ -1,21 +1,14 @@
 export default [
   {
     id: 1,
-    title: 'iPhone 9',
-    description: 'An apple mobile which is nothing like apple',
-    price: 549,
-    discountPercentage: 12.96,
-    rating: 4.69,
+    title: 'Kit de Distribucion',
+    description: 'Kit de distribución para vehículos Volkswagen equipados con motor 1.6',
+    price: 115000,
     stock: 94,
-    brand: 'Apple',
-    category: 'smartphones',
-    thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+    brand: 'SKF',
+    category: 'Volkswagen',
     images: [
-      'https://i.dummyjson.com/data/products/1/1.jpg',
-      'https://i.dummyjson.com/data/products/1/2.jpg',
-      'https://i.dummyjson.com/data/products/1/3.jpg',
-      'https://i.dummyjson.com/data/products/1/4.jpg',
-      'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+      'https://http2.mlstatic.com/D_NQ_NP_761589-MLA52778710542_122022-O.webp',
     ],
   },
   {

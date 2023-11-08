@@ -4,6 +4,7 @@ import { CategoryItem } from "./components";
 import { Header } from "../../components";
 import styles from "./Home.style";
 import { useGetCategoriesQuery } from "../../services/shopApi";
+
 //prueba edit
 const Home = ({ navigation }) => {
 

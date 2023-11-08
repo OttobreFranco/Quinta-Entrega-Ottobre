@@ -1,19 +1,25 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { baseUrl } from '../firebase'
+import { baseUrl } from "../firebase";
 
 export const shopApi = createApi({
-  reducerPath: 'shopApi',
+  reducerPath: "shopApi",
   baseQuery: fetchBaseQuery({ baseUrl }),
-  endpoints: builder => ({
+  endpoints: (builder) => ({
     getCategories: builder.query({
-      query: () => 'categories.json',
+      query: () => "categories.json",
+    }),
+    getModels: builder.query({
+      query: () => `categories.json?orderBy="title"`,
+    }),
+    getModelsByCategory: builder.query({
+      query: (category) => `categories/modelos?&equalTo="${category}"`,
     }),
     getProducts: builder.query({
-      query: () => 'products.json',
+      query: () => "products.json",
     }),
     getProductsByCategory: builder.query({
-      query: category =>
+      query: (category) =>
         `products.json?orderBy="category"&equalTo="${category}"`,
     }),
     getOrders: builder.query({
@@ -21,32 +27,34 @@ export const shopApi = createApi({
     }),
     postOrder: builder.mutation({
       query: ({ ...order }) => ({
-        url: 'orders.json',
-        method: 'POST',
+        url: "orders.json",
+        method: "POST",
         body: order,
       }),
     }),
     getProfileImage: builder.query({
-      query: localId => `profileImages/${localId}.json`,
+      query: (localId) => `profileImages/${localId}.json`,
     }),
     postProfileImage: builder.mutation({
       query: ({ image, localId }) => ({
         url: `profileImages/${localId}.json`,
-        method: 'PUT',
+        method: "PUT",
         body: {
           image: image,
         },
       }),
     }),
   }),
-})
+});
 
 export const {
   useGetCategoriesQuery,
+  useGetModelsByCategoryQuery,
+  useGetModelsQuery,
   useGetProductsQuery,
   useGetOrdersQuery,
   useGetProductsByCategoryQuery,
   usePostOrderMutation,
   useGetProfileImageQuery,
   usePostProfileImageMutation,
-} = shopApi
+} = shopApi;

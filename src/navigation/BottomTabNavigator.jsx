@@ -45,7 +45,7 @@ function BottomTabNavigator() {
           ),
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="OrdersNav"
         component={OrdersNavigator}
         options={{
@@ -57,7 +57,7 @@ function BottomTabNavigator() {
             />
           ),
         }}
-      />
+      /> */}
       <BottomTab.Screen
         name="ProfileNav"
         component={ProfileNavigator}

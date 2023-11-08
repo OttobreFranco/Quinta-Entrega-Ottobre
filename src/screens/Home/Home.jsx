@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       
-      <Header title={"Categories"} />
+      <Header title={"Marcas"} />
       <View>
         <FlatList
           data={data}

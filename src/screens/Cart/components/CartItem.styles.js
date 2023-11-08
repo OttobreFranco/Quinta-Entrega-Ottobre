@@ -7,6 +7,7 @@ export default styles = StyleSheet.create({
     padding: 8,
     borderBottomWidth: 1,
     borderBottomColor: colors.secondary,
+    height: 300,
   },
   name: {
     fontSize: 18,
@@ -20,7 +21,7 @@ export default styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   imageContainer: {
-    height: "40%",
+    height: "60%",
     width: "85%",
     alignSelf: "center",
     marginTop: 10,
@@ -30,4 +31,18 @@ export default styles = StyleSheet.create({
     height: '100%',
     width: '100%',
 },
+cartButton: {
+  flexDirection: "row",
+},
+deleteButton: {
+  alignSelf: "center",
+  marginLeft: "35%",
+  flexDirection: "row",
+},
+deleteText:{
+  justifyContent: "center",
+  alignContent: "center",
+  marginTop: 5,
+  
+}
 });
